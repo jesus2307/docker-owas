@@ -1,0 +1,11 @@
+version: '3'
+services:
+    zap:
+        build: .
+        ports:
+            - "8090:8090"
+            - "8080:8080"
+            - "5555:5555"
+        volumes:
+            - ./reports:/zap/reports
+        command: "/zap/zap.sh -daemon -port 8080 -config '/zap/conf/api.conf' -addonupdate -addoninstall pscanrulesBeta"
