@@ -25,6 +25,42 @@ Nota: Asegúrate de reemplazar <url_del_repositorio> con la URL real del reposit
 
 
 
+Docker-OWASP
+
+Este repositorio contiene una implementación de Docker con OWASP ZAP.
+Instrucciones de uso:
+
+    Descarga el repositorio de Git en el directorio donde desees instalar la aplicación:
+
+    bash
+
+git clone <url_del_repositorio>
+
+Lanza el contenedor con el siguiente comando:
+
+bash
+
+sudo docker-compose up -d
+
+Copia el archivo urls.txt al contenedor de Docker con el siguiente comando:
+
+bash
+
+sudo docker cp [CONTAINER ID]:/zap/cookies.txt cookies.txt
+
+Copia el archivo del script utilizando el siguiente comando:
+
+bash
+
+sudo docker exec -t [CONTAINER ID] python /zap/script-based-authentication.py
+
+Lanza el script utilizando el siguiente comando:
+
+bash
+
+    sudo docker exec -t [CONTAINER ID] zap-baseline.py -t [http://localhost:3000] -g gen.conf -r baseline.html -c cookies.txt -l WARN -s -m 5
+
+Nota: Sustituye [CONTAINER ID] con el ID de tu contenedor Docker. Además, verifica que [http://localhost:3000] sea la URL correcta de tu aplicación.
 
 
 otros comandos de posible utilidad 
