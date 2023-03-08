@@ -33,9 +33,9 @@ implemtnacion de docker con owaszap
 
 
 
-####Créditos
+#### Créditos
 
-El código utilizado en este ejemplo está basado en el repositorio de @jesus2307.
+El código utilizado en este ejemplo está basado en el repositorio de <a href="https://github.com/jesus2307?tab=repositories">@jesus2307</a>.
 
 
 otros comandos de posible utilidad 
