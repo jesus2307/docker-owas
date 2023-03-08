@@ -31,6 +31,23 @@ Este repositorio contiene una implementación de Docker con OWASP ZAP.
    ```bash
    git clone <url_del_repositorio>
 
+2. Lanzar el contenedor: 
+
+   ```bash
+   sudo docker-compose up -d
+3. Copiar el archivo urls.txt al contenedor: 
+
+   ```bash
+   sudo docker cp [CONTAINER ID]:/zap/cookies.txt cookies.txt
+4. Copiar el archivo del script: 
+
+   ```bash
+   sudo docker exec -t [CONTAINER ID] python /zap/script-based-authentication.py
+
+5. Lanzar el script: 
+
+   ```bash
+   sudo docker exec -t [CONTAINER ID] zap-baseline.py -t [http://localhost:3000] -g gen.conf -r baseline.html -c cookies.txt -l WARN -s -m 5
 
 otros comandos de posible utilidad 
 sudo docker run --rm -u zap -p 8095:8095 -v $(pwd):/zap/wrk/:rw -v /ruta/hacia/cookies.txt:/zap/wrk/cookies.txt owasp/zap2docker-stable zap-baseline.py -t http://localhost:3000 -r baseline.html -c cookies.txt -l WARN -s -m 5
