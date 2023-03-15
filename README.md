@@ -33,7 +33,18 @@ implemtnacion de docker con owaszap
 
 
 
+Para poder abrir el ZAP GUI en el contenedor, puedes agregar los siguientes comandos al final del Dockerfile:
 
+css
+
+RUN apt-get -y install xvfb
+ENV DISPLAY=:99
+
+CMD ["Xvfb", ":99", "-screen", "0", "1024x768x16", "-ac"] && zap.sh -daemon && zap-cli --api-key ${ZAP_API_KEY} --verbose authorize && python3 /zap/script-based-authentication.py && bash
+
+Estos comandos instalan el servidor X virtual y lo configuran para que ZAP pueda abrirse en modo gráfico. Luego, se inicia ZAP en modo daemon y se autoriza el API Key de ZAP CLI. A continuación, se ejecuta el script de autenticación y se abre una shell de bash para permitir la interacción manual con el contenedor si es necesario.
+
+Ten en cuenta que necesitarás proporcionar un valor para ZAP_API_KEY en tiempo de ejecución para poder autorizar el API Key de ZAP CLI. Puedes hacerlo agregando la opción --env ZAP_API_KEY=<API_KEY> cuando ejecutes el contenedor.
 #### Créditos
 
 El código utilizado en este ejemplo está basado en el repositorio de <a href="https://github.com/jesus2307?tab=repositories">@jesus2307</a>.
