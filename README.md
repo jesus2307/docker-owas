@@ -34,8 +34,7 @@ implemtnacion de docker con owaszap
 
 
 Para poder abrir el ZAP GUI en el contenedor, puedes agregar los siguientes comandos al final del Dockerfile:
-
-css
+ ```bash
 
 RUN apt-get -y install xvfb
 ENV DISPLAY=:99
